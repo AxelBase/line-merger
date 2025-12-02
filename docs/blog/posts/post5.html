@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>AxelBase – Line-by-Line Merger</title>
+        <link rel="icon" href="../../AxelLab-Logo.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+		<link href="../../_app/immutable/assets/0.BJB__guW.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/9.UPBK36Lr.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.HeQDmXTc.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/xizgaaby.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PSnYqPoe.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Bwuw9f3K.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CTPYrhi8.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B7A2kyxE.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/wkqvWU_s.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.Ckyaz2K6.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/jHbrr0AL.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/ZONESoUh.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/M4KufpZw.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/D_4Q2Uyy.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.CJwvuZa0.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Dp9Fcliv.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Bkq30ukI.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B601xgNi.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/VWP5YZpi.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BYdOMViP.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/9.Af_lDjxZ.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Bn1gnw7K.js"><!--1li990r--><meta name="description" content="Learn how to perform complex multi-step merges by progressively applying changes using the Use as Base feature."/> <meta property="og:title" content="Iterative Merging with “Use as Base” | Merger Blog"/> <meta property="og:description" content="Learn how to perform complex multi-step merges by progressively applying changes using the Use as Base feature."/> <meta property="og:url" content="../../blog/posts/post5"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/><!----><title>Iterative Merging with “Use as Base” | Merger Blog</title>
+
+        <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    </head>
+    <body data-bs-theme="light">
+        <div style="display: contents">
+            <!--[--><!--[--><!----><header class="fixed-top p-3 w-100" style="pointer-events: none; z-index: 1040;"><nav class="container glass-card rounded-pill px-4 py-2 d-flex justify-content-between align-items-center" style="pointer-events: auto; max-width: 1200px; border-radius: 50px; overflow: visible;"><div class="d-flex align-items-center gap-3"><a href="../../" class="d-flex align-items-center gap-2 text-decoration-none logo-group svelte-12qhfyh"><img src="../../AxelLab-Logo.ico" alt="Logo" class="navbar-brand-logo svelte-12qhfyh"/> <span class="fw-bold fs-5" style="color: var(--color-text-main);">AxelBase</span></a> <div class="position-relative d-none d-sm-block"><button class="bmac-button svelte-12qhfyh"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="svelte-12qhfyh"><path d="M12.35,22.2L12,22A10,10,0,0,1,2,12V10A2,2,0,0,1,4,8H7.2A5.13,5.13,0,0,1,12,3A5.13,5.13,0,0,1,16.8,8H20A2,2,0,0,1,22,10V12A10,10,0,0,1,12.35,22.2M4,10V12A8,8,0,0,0,12,20A8,8,0,0,0,20,12V10H16.8A5.11,5.11,0,0,1,12.5,5.12A5.15,5.15,0,0,1,7.2,10H4Z"></path></svg> <span>Coffee</span></button> <!--[!--><!--]--></div></div> <div class="d-flex align-items-center gap-3"><ul style="list-style: none; display: flex; align-items: center; margin: 0; padding:0; gap: 0.5rem;" class="d-none d-lg-flex"><li><a class="nav-link-custom svelte-12qhfyh" href="../../">Home</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../#about">About</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../#how-to">How to</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../#faq">FAQ</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../blog">Blog</a></li></ul> <button class="btn btn-outline-secondary d-flex align-items-center justify-content-center border-0" style="width: 40px; height: 40px; border-radius: 50%;" aria-label="Toggle dark mode"><!--[!--><i class="bi bi-moon-stars-fill fs-5" style="color: #464531;"></i><!--]--></button></div></nav></header> <main><!--[--><!----><div class="container fade-in post-layout svelte-1li990r"><div class="breadcrumbs svelte-1li990r"><a href="../../blog" class="svelte-1li990r">Blog</a> <span>/</span> <p class="svelte-1li990r">Iterative Merging with “Use as Base”</p></div> <article class="prose svelte-1li990r"><h1 class="svelte-1li990r">Iterative Merging with “Use as Base”</h1> <p class="post-meta svelte-1li990r">Published: December 2, 2025</p> <p class="svelte-1li990r">Sometimes a merge isn’t just between two versions — it’s a chain of changes across multiple revisions. The “Use as Base” button turns the Line-by-Line Merger into a powerful iterative tool.</p> <h2 class="svelte-1li990r">How It Works</h2> <p class="svelte-1li990r">After you finish reviewing and accepting the changes you want, click “Use as Base”. The current Final Result instantly becomes the new left-side text, and all decisions are reset. You can now paste a third version on the right and continue merging — building up the file exactly how you want, one controlled step at a time.</p> <h3 class="svelte-1li990r">Real-World Example</h3> <p class="svelte-1li990r">Imagine updating a large configuration file in stages: first apply security fixes, then performance tweaks, then new features. Instead of trying to review everything at once, you apply each batch separately, verifying the result before moving on.</p> <h2 class="svelte-1li990r">Why This Matters</h2> <p class="svelte-1li990r">Complex changes are easier to reason about when broken into smaller, focused reviews. Iterative merging reduces cognitive load and dramatically lowers the chance of mistakes. You never lose work — each approved version becomes the new foundation.</p> <h2 class="svelte-1li990r">FAQ</h2> <details class="svelte-1li990r"><summary class="svelte-1li990r">Does it keep my previous decisions?</summary> <p class="svelte-1li990r">No — decisions are cleared so you start fresh with the new base. This prevents accidental carry-over.</p></details> <details class="svelte-1li990r"><summary class="svelte-1li990r">Can I go backwards?</summary> <p class="svelte-1li990r">You would need to manually paste a previous version again, but most workflows only move forward.</p></details> <details class="svelte-1li990r"><summary class="svelte-1li990r">Is there a limit to how many times I can do this?</summary> <p class="svelte-1li990r">No. You can chain as many iterations as needed.</p></details> <p class="italic-note svelte-1li990r">Iterative merging turns big, scary changes into calm, confident steps.</p></article></div><!----><!--]--></main> <footer class="custom-footer glass-card rounded-0 border-start-0 border-end-0 border-bottom-0 svelte-12qhfyh"><div class="container d-flex justify-content-between align-items-center"><span>© 2025 AxelBase Line-by-Line Merger</span> <div><a href="../../privacy" class="footer-link svelte-12qhfyh">Privacy</a> <span style="opacity:0.3; margin: 0 5px;">|</span> <a href="../../terms" class="footer-link svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1h6b6ra = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/line-merger"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.HeQDmXTc.js"),
+						import("../../_app/immutable/entry/app.Ckyaz2K6.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 9],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		
+        </div>
+
+        <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

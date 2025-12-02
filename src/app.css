@@ -1,0 +1,239 @@
+/* app.css */
+
+/* --- Variables (Light Mode Default) --- */
+:root {
+  /* Core Colors */
+  --theme-accent: #464531;       /* Your Brown Grey */
+  --theme-accent-hover: #5e5d45;
+  --theme-accent-text: #fff;
+  
+  /* Backgrounds & Glass */
+  --primary-bg: #fdfdfc;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 8px 32px 0 rgba(70, 69, 49, 0.1);
+  
+  /* Text */
+  --color-text-main: #2c2c2c;
+  --color-text-muted: #666;
+  
+  /* Blobs (Light variants of brown/grey) */
+  --blob-color-1: #ecece6;
+  --blob-color-2: #e0e0d8;
+
+  /* Diff View Colors (Light) */
+  --diff-added-bg: #e6ffed;
+  --diff-added-text: #155724;
+  --diff-removed-bg: #ffeef0;
+  --diff-removed-text: #721c24;
+  --diff-accepted-bg: #d1edc8;
+  --diff-rejected-bg: #f5c6cb;
+  
+  /* Dimensions */
+  --radius-lg: 24px;
+  --radius-pill: 50px;
+}
+
+/* --- Dark Mode Overrides --- */
+[data-bs-theme="dark"] {
+  /* Core Colors */
+  --theme-accent: #dcdbc4;       /* Lighter text/icon color for dark mode */
+  --theme-accent-hover: #ffffff;
+  --theme-accent-text: #1a1a1a;  /* Text inside primary buttons */
+
+  /* Backgrounds & Glass */
+  --primary-bg: #1a1915;         /* Deep Dark Brown/Black */
+  --glass-bg: rgba(30, 29, 25, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  
+  /* Text */
+  --color-text-main: #f1f1f1;
+  --color-text-muted: #a0a0a0;
+  
+  /* Blobs (Darker variants) */
+  --blob-color-1: #2d2c25;
+  --blob-color-2: #24231f;
+
+  /* Diff View Colors (Dark Mode Optimized) */
+  --diff-added-bg: rgba(46, 160, 67, 0.2);
+  --diff-added-text: #7ee787;
+  --diff-removed-bg: rgba(248, 81, 73, 0.2);
+  --diff-removed-text: #ff7b72;
+  --diff-accepted-bg: rgba(46, 160, 67, 0.4);
+  --diff-rejected-bg: rgba(248, 81, 73, 0.4);
+}
+
+/* --- Global & Reset --- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+  padding-bottom: 60px; /* Space for footer */
+}
+
+/* --- Animated Background Blobs --- */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(80px); /* Soft bubble effect */
+  opacity: 0.8;
+  animation: floatBlob 25s infinite alternate ease-in-out;
+  transition: background-color 0.5s ease;
+}
+
+body::before {
+  background: var(--blob-color-1);
+  top: -20%;
+  left: -20%;
+}
+
+body::after {
+  background: var(--blob-color-2);
+  bottom: -20%;
+  right: -20%;
+  animation-delay: -12s;
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 40px) scale(1.1); }
+}
+
+/* --- Typography & Code --- */
+textarea, pre, .diff-line, code {
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+/* --- Glassmorphism Cards --- */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid var(--glass-border);
+  font-weight: 700;
+  color: var(--color-text-main);
+  padding: 1rem 1.5rem !important;
+}
+
+/* --- Forms & Inputs --- */
+.form-control {
+  background-color: rgba(255, 255, 255, 0.2) !important; /* Semi-transparent input */
+  border: 1px solid var(--glass-border) !important;
+  color: var(--color-text-main) !important;
+  border-radius: 12px !important;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 0 4px rgba(70, 69, 49, 0.1) !important;
+  border-color: var(--theme-accent) !important;
+}
+
+.form-control::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+/* --- Buttons --- */
+.btn {
+  border-radius: var(--radius-pill) !important;
+  padding: 0.5rem 1.2rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important; /* Bouncy */
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background-color: #464531 !important; /* Always brown in light mode */
+  border-color: #464531 !important;
+  color: white !important;
+}
+
+/* Specific override for dark mode if we want the main buttons to pop */
+[data-bs-theme="dark"] .btn-primary {
+  background-color: #dcdbc4 !important;
+  border-color: #dcdbc4 !important;
+  color: #1a1a1a !important;
+}
+
+.btn-primary:hover {
+  filter: brightness(110%);
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: var(--color-text-main) !important;
+  border-color: var(--glass-border) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--theme-accent) !important;
+  color: white !important;
+}
+
+/* --- Diff Styling --- */
+.diff-line {
+  user-select: none;
+  padding: 2px 10px;
+  margin: 2px 0;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.diff-removed { background: var(--diff-removed-bg); color: var(--diff-removed-text); }
+.diff-added   { background: var(--diff-added-bg); color: var(--diff-added-text); }
+.diff-context { opacity: 0.6; color: var(--color-text-main); }
+
+.diff-accepted .diff-added   { background: var(--diff-accepted-bg); font-weight: 600; border-left: 3px solid var(--diff-added-text); }
+.diff-rejected .diff-removed { background: var(--diff-rejected-bg); text-decoration: line-through; opacity: 0.6; }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+  background: rgba(70, 69, 49, 0.2); 
+  border-radius: 10px; 
+  border: 2px solid transparent; 
+  background-clip: content-box; 
+}
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); }
