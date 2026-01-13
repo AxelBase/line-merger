@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axelbase.github.io/line-merger/sitemap.xml
+Sitemap: https://line-merger.vercel.app/sitemap.xml
